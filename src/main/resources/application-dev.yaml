@@ -1,0 +1,16 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://escape-rdb:3306/escape
+    username: $DB_USERNAME
+    password: $DB_PASSWORD
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+  docker:
+    compose:
+      skip:
+        in-tests: false

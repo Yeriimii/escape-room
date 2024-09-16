@@ -1,0 +1,17 @@
+spring:
+  config:
+    activate:
+      on-profile: log
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
+        orm:
+          jdbc:
+            bind: trace
