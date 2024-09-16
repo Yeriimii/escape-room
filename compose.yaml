@@ -1,10 +1,24 @@
 services:
   mysql:
-    image: 'mysql:latest'
+    image: 'mysql:8.0.39'
+    volumes:
+      - data:/var/lib/mysql
+    container_name: escape-rdb
     environment:
-      - 'MYSQL_DATABASE=mydatabase'
-      - 'MYSQL_PASSWORD=secret'
-      - 'MYSQL_ROOT_PASSWORD=verysecret'
-      - 'MYSQL_USER=myuser'
+      MYSQL_DATABASE: escape
+      MYSQL_PASSWORD: 1234
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_USER: admin
     ports:
-      - '3306'
+      - '3306:3306'
+  backend:
+    build: .
+    restart: always
+    container_name: escape-backend
+    ports:
+      - '8081:8080'
+    depends_on:
+      - mysql
+
+volumes:
+  data:
