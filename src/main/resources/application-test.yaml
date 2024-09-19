@@ -6,8 +6,3 @@ spring:
     url: jdbc:tc:mysql:8.0.39:///test_db?TC_INITSCRIPT=file:src/test/resources/scheme.sql
     username: test
     password: test1234
-  jpa:
-    properties:
-      hibernate:
-        show_sql: true
-        format_sql: true
