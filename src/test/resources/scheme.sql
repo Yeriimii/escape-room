@@ -20,7 +20,7 @@ CREATE TABLE `coupon` (
 
 CREATE TABLE `office` (
                           `office_id` int PRIMARY KEY AUTO_INCREMENT,
-                          `name` varchar(100) NOT NULL,
+                          `name` varchar(100) NOT NULL UNIQUE,
                           `welcome_message` text,
                           `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
                           `created_by` int,
@@ -37,7 +37,7 @@ CREATE TABLE `account` (
 CREATE TABLE `theme` (
                          `theme_id` int PRIMARY KEY AUTO_INCREMENT,
                          `office_id` int NOT NULL,
-                         `name` varchar(100) NOT NULL,
+                         `name` varchar(100) NOT NULL UNIQUE,
                          `price` int NOT NULL,
                          `open_time` time NOT NULL,
                          `discount` int DEFAULT 0,
