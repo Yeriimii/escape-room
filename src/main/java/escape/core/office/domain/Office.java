@@ -19,6 +19,7 @@ import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.util.StringUtils;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -33,6 +34,7 @@ public class Office extends BaseEntity {
     @Column(name = "office_id")
     private Integer id;
 
+    @Column(name = "name", unique = true, nullable = false, length = 100)
     private String name;
 
     @Default
@@ -46,6 +48,12 @@ public class Office extends BaseEntity {
     private String welcomeMessage;
 
     public void changeName(String name) {
+        if (!StringUtils.hasText(name)) {
+            throw new IllegalArgumentException("이름은 null 이거나, 비어있거나, 공백만으로 채울 수 없습니다.");
+        }
+        if (name.length() > 100) {
+            throw new IllegalArgumentException("변경할 이름은 100자가 넘을 수 없습니다.");
+        }
         this.name = name;
     }
 
