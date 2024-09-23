@@ -1,8 +1,10 @@
 CREATE TABLE `admin` (
                          `admin_id` int PRIMARY KEY AUTO_INCREMENT,
+                         `login_id` varchar(20) UNIQUE NOT NULL,
+                         `password` varchar(255) NOT NULL,
                          `name` varchar(100) NOT NULL,
                          `phone_number` varchar(13),
-                         `role` varchar(100),
+                         `role` varchar(100) NOT NULL,
                          `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
                          `created_by` int,
                          `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
